@@ -17,7 +17,7 @@ If you enjoy this project and want to support me, you can donate via:
 
 [![PayPal](https://img.shields.io/badge/Donate-PayPal-00457C?style=flat&logo=paypal&logoColor=FFFFFF)](https://www.paypal.com/donate/?hosted_button_id=WVYHSXPALLQ88)
 
-[![Join Discord](https://img.shields.io/badge/Discord-Join%20Server-5865F2?logo=discord&logoColor=white)](https://discord.gg/yourInviteCode)
+[![Join Discord](https://img.shields.io/badge/Discord-Join%20Server-5865F2?logo=discord&logoColor=white)](https://discord.gg/gge6W3nknx)
 
 ---
 
