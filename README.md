@@ -147,7 +147,9 @@ This project is licensed under the MIT License.
 * If **TMDb API key is not set**, movie identification features will be disabled.
 * CSV import requires headers: `barcode,title,year,format,poster_path,status`.
 * The dynamic key input allows setting the API key **without editing code manually**, but you must **restart the app** for changes to take effect.
+* Inside the movie_catalogue folder is a file **movies_export.csv**. You can use this to demo the catalogue by importing it via the import button in the footer. This is my own personal collection, so enjoy.
 
 ---
 
-
+![Python](https://img.shields.io/badge/python-3.11-blue)
+![License](https://img.shields.io/badge/license-MIT-green)
