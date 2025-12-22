@@ -151,5 +151,24 @@ This project is licensed under the MIT License.
 
 ---
 
-[Python](https://img.shields.io/badge/python-3.11-blue)
-[License](https://img.shields.io/badge/license-MIT-green)
+## Why did I make this?
+
+I’ve been looking for a good way to catalogue my physical movie collection for years, but everything I found was locked behind **subscriptions**, **artificial limits**, or was simply **clunky to use**. Most importantly, none of them were **open source**.
+
+If I want to change how a piece of software works, I want to be able to do that — not wait for an update or pay for a feature.
+
+So I built **Movie Cataloguer** to be:
+
+* **Fully open source**
+* **Completely self-hosted**
+* **Highly customisable**
+* **Free to use, forever**
+
+To get you started quickly, the app includes **TMDb API integration** for automatic movie identification, **fast backend processing** with Flask and SQLite, and a **clean, visual UI** designed specifically for browsing physical media collections.
+
+---
+
+![Python](https://img.shields.io/badge/python-3.11-blue)
+![License](https://img.shields.io/badge/license-MIT-green)
+
+
