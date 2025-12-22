@@ -5,6 +5,16 @@ A web-based movie catalogue built with **Flask** and **SQLite** that lets you ma
 
 ---
 
+## Support / Donate
+
+If you enjoy this project and want to support me, you can donate via:
+
+[![Buy Me a Coffee](https://img.shields.io/badge/Buy%20me%20a%20coffee-FFDD00?style=flat&logo=buymeacoffee&logoColor=000)](https://www.buymeacoffee.com/msjxzqtrwfj)
+
+[![PayPal](https://img.shields.io/badge/Donate-PayPal-00457C?style=flat&logo=paypal&logoColor=FFFFFF)](https://www.paypal.com/donate?hosted_button_id=KyleHDring)
+
+---
+
 ## Features
 
 * **Add movies** with title, year, barcode, format (Blu-ray/DVD/4K), and status (Owned/Wanted).
