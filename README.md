@@ -1,3 +1,6 @@
+<p align="center">
+  <img src="assets/logo.png" alt="Movie Cataloguer Logo" width="180">
+</p>
 
 # Movie Cataloguer
 
