@@ -420,6 +420,23 @@ button.save:active, button.delete:active, button.identify-btn:active {
 /* File input hidden for import CSV */
 .footer-file { display: none; }
 
+.footer-btn.discord {
+    background: #5865F2; /* Discord blurple */
+}
+
+.footer-btn.github {
+    background: #24292e; /* GitHub dark */
+}
+
+.footer-btn.discord:hover {
+    background: #4752c4;
+}
+
+.footer-btn.github:hover {
+    background: #1b1f23;
+}
+
+
 /* Responsive Footer */
 @media(max-width: 700px) {
     .footer { flex-direction: column; gap: 10px; }
@@ -580,10 +597,18 @@ document.getElementById("tmdb-key-submit").addEventListener("click", async () =>
             <i class="fas fa-trash-alt"></i> Clear All Movies
         </button>
     </form>
-</div>
 
+    <div>
+                    <!-- Join Discord -->
+        <a href="https://discord.gg/gge6W3nknx" target="_blank" class="footer-btn discord">
+            <i class="fab fa-discord"></i> Join our Discord
+        </a>
 
-
+        <!-- View on GitHub -->
+        <a href="https://github.com/TheMarveled/movie-cataloguer" target="_blank" class="footer-btn github">
+            <i class="fab fa-github"></i> View on GitHub
+        </a>
+    </div>
     </form>
 </div>
 
