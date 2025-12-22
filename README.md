@@ -5,6 +5,7 @@ A web-based movie catalogue built with **Flask** and **SQLite** that lets you ma
 
 ---
 
+
 ## Support / Donate
 
 If you enjoy this project and want to support me, you can donate via:
@@ -12,6 +13,8 @@ If you enjoy this project and want to support me, you can donate via:
 [![Buy Me a Coffee](https://img.shields.io/badge/Buy%20me%20a%20coffee-FFDD00?style=flat&logo=buymeacoffee&logoColor=000)](https://www.buymeacoffee.com/msjxzqtrwfj)
 
 [![PayPal](https://img.shields.io/badge/Donate-PayPal-00457C?style=flat&logo=paypal&logoColor=FFFFFF)](https://www.paypal.com/donate/?hosted_button_id=WVYHSXPALLQ88)
+
+[![Join Discord](https://img.shields.io/badge/Discord-Join%20Server-5865F2?logo=discord&logoColor=white)](https://discord.gg/yourInviteCode)
 
 ---
 
@@ -165,10 +168,15 @@ So I built **Movie Cataloguer** to be:
 * **Free to use, forever**
 
 To get you started quickly, the app includes **TMDb API integration** for automatic movie identification, **fast backend processing** with Flask and SQLite, and a **clean, visual UI** designed specifically for browsing physical media collections.
+However I do appreciate a donation to help maintain this project.
 
 ---
 
 ![Python](https://img.shields.io/badge/python-3.11-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
+--
 
+# Donator's Column
+
+Empty... so far
