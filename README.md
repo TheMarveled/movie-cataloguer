@@ -35,7 +35,9 @@ If you enjoy this project and want to support me, you can donate via:
 ---
 
 <img src="/imgs/main_img.PNG" alt='img src' width="500">
+This is the cataloguer. Compact and easy to understand.
 <img src="/imgs/top-card.PNG" alt='img src' width="400">
+This is the top card. You can search movies, add movies, and sort/filter.
 
 ## Installation
 
