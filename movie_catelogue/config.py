@@ -1,5 +1,5 @@
 # TMDb API key
-TMDB_API_KEY = "f5c2585b8b4813b98778c55f490f6b21"
+TMDB_API_KEY = ""
 
 # SQLite database path
 DB_PATH = "movies.db"
