@@ -35,6 +35,7 @@ If you enjoy this project and want to support me, you can donate via:
 ---
 
 <img src="/imgs/main_img.PNG" alt='img src' width="500">
+<img src="/imgs/top-card.PNG" alt='img src' width="400">
 
 ## Installation
 
