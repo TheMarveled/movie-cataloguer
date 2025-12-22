@@ -134,6 +134,7 @@ Visit [http://127.0.0.1:5000](http://127.0.0.1:5000)
 * **Debug Mode**: `DEBUG = True`
 
 You can customize all these settings in `config.py` to personalize your app.
+<img src="/imgs/config.PNG" alt='img src' width="400">
 
 ---
 
