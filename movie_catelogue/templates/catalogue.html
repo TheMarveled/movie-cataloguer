@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>My Movie Catalogue</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+<!-- Font Awesome for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+/* === General Page Styling === */
+body {
+    font-family: 'Roboto', system-ui, Arial, sans-serif;
+    background: linear-gradient(160deg, #0f2027, #203a43, #2c5364);
+    color: #f5f5f5;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 { 
+    text-align: center; 
+    font-size: 2.5em; 
+    font-weight: 700; 
+    margin-bottom: 10px; 
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+}
+
+.count {
+    text-align:center;
+    margin-bottom:20px;
+    color:#ccc;
+    font-size:1.1em;
+}
+
+/* === Top Control Card === */
+.top-card {
+    max-width: 950px;
+    margin: 0 auto 30px auto;
+    padding: 20px;
+    background: rgba(30,30,30,0.85);
+    border-radius: 16px;
+    box-shadow: 0 6px 25px rgba(0,0,0,0.5);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+    align-items: center;
+}
+
+/* Add Movie Form */
+.top-card .add-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    flex: 1 1 500px;
+}
+
+.top-card .add-form input[type="text"],
+.top-card .add-form select {
+    padding: 10px 14px;
+    font-size: 14px;
+    border-radius: 8px;
+    border: 1px solid #555;
+    background: #1c1c1c;
+    color: #f5f5f5;
+    min-width: 120px;
+    flex: 1 1 auto;
+    transition: all 0.2s ease;
+}
+
+.top-card .add-form input:focus,
+.top-card .add-form select:focus {
+    outline: none;
+    border-color: #f39c12;
+}
+
+.top-card .add-form button {
+    padding: 10px 22px;
+    background: linear-gradient(135deg,#f39c12,#f1c40f);
+    color: #111;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+.top-card .add-form button:hover {
+    background: linear-gradient(135deg,#f1c40f,#f39c12);
+    transform: scale(1.05);
+}
+
+/* Search + Sort */
+.top-card .search-sort {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    flex: 1 1 300px;
+    justify-content: flex-end;
+}
+
+.top-card #search {
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: 1px solid #555;
+    background: #1c1c1c;
+    color: #f5f5f5;
+    font-size: 14px;
+    width: 200px;
+    transition: all 0.2s ease;
+}
+
+.top-card #search:focus {
+    border-color: #f39c12;
+    outline: none;
+}
+
+.top-card .sort-buttons,
+.top-card .filter-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.top-card .sort-buttons button,
+.top-card .filter-buttons button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.top-card .sort-buttons button {
+    background: #2980b9;
+    color: #fff;
+}
+.top-card .sort-buttons button.active { background: #3498db; transform: scale(1.05); }
+.top-card .sort-buttons button:hover { background: #1c5980; }
+
+.top-card .filter-buttons button {
+    background: #555;
+    color: #fff;
+}
+.top-card .filter-buttons button.active {
+    background: #f39c12;
+    color: #111;
+}
+.top-card .filter-buttons button:hover { background: #777; }
+
+.sort-buttons button i { font-size: 16px; vertical-align: middle; }
+
+/* Alphabet Bar */
+.alphabet-bar {
+    text-align: center;
+    margin-bottom: 15px;
+}
+.alphabet-bar .alpha-btn {
+    padding: 6px 10px;
+    margin: 2px;
+    border-radius: 6px;
+    border: none;
+    background: #2980b9;
+    color: #fff;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+.alphabet-bar .alpha-btn.active { background: #3498db; transform: scale(1.05); }
+.alphabet-bar .alpha-btn:hover { background: #1c5980; }
+
+/* Poster Grid */
+.poster-grid {
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(200px,1fr));
+    gap:20px;
+    max-width:1300px;
+    margin:auto;
+}
+
+.poster-card {
+    position:relative;
+    background:rgba(20,20,20,0.9);
+    border-radius:12px;
+    overflow:hidden;
+    display:flex;
+    flex-direction:column;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.poster-card:hover { transform: scale(1.02); box-shadow: 0 8px 20px rgba(0,0,0,0.6); }
+
+.poster-card img {
+    width:100%;
+    object-fit:cover;
+    display:block;
+    transition: transform 0.3s ease;
+    border-bottom: 1px solid #444;
+}
+
+.poster-card img:hover { transform: scale(1.05); }
+
+.poster-info {
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    padding:12px;
+}
+
+.poster-info input, .poster-info select {
+    width:100%;
+    padding:10px 14px;
+    border-radius:8px;
+    border:1px solid #555;
+    background:#1c1c1c;
+    color:#f5f5f5;
+    font-size:14px;
+    transition: all 0.2s ease;
+}
+
+.poster-info input:focus,
+.poster-info select:focus { border-color: #f39c12; outline: none; }
+
+.poster-info .actions {
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    justify-content:space-between;
+    margin-top:10px;
+}
+
+/* Badge */
+.badge.wanted {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: #e74c3c;
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 12px;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+/* Action Buttons */
+button.save, button.delete, button.identify-btn {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    border: none;
+    font-size: 18px;
+    padding: 0;
+}
+
+button.save { background: linear-gradient(135deg, #27ae60, #2ecc71); color:#fff; }
+button.delete { background: linear-gradient(135deg, #c0392b, #e74c3c); color:#fff; }
+button.identify-btn { background: linear-gradient(135deg, #f39c12, #f1c40f); color:#fff; }
+
+button.save:hover, button.delete:hover, button.identify-btn:hover {
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 6px 14px rgba(0,0,0,0.35);
+}
+button.save:active, button.delete:active, button.identify-btn:active {
+    transform: translateY(1px) scale(0.98);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+}
+
+/* Pagination */
+.pagination {
+    text-align:center;
+    margin-top:30px;
+}
+.pagination button {
+    margin:0 5px;
+    padding:6px 12px;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+    background:#2980b9;
+    color:white;
+    transition: all 0.2s ease;
+}
+.pagination button:hover { background:#3498db; }
+.pagination span {margin:0 10px;}
+
+/* Identify Modal */
+.identify-modal {
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.9);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    z-index:10000;
+    padding:20px;
+    transition: opacity 0.3s ease;
+}
+.identify-modal.hidden { display:none; }
+
+.identify-content {
+    background:#111;
+    width:100%;
+    max-width:900px;
+    max-height:80vh;
+    border-radius:16px;
+    overflow:hidden;
+    display:flex;
+    flex-direction:column;
+    color:#f5f5f5;
+    box-shadow:0 0 40px rgba(0,0,0,0.7);
+}
+
+.identify-header {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:16px 20px;
+    background:#222;
+    color:#f39c12;
+    font-size:1.1em;
+    font-weight:700;
+    letter-spacing:0.5px;
+}
+
+.identify-close {
+    background:none;
+    border:none;
+    color:#f39c12;
+    font-size:28px;
+    cursor:pointer;
+    transition: color 0.2s ease;
+}
+.identify-close:hover { color:#f1c40f; }
+
+.identify-grid {
+    padding:20px;
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(140px,1fr));
+    gap:18px;
+    overflow-y:auto;
+}
+
+.identify-card {
+    cursor:pointer;
+    text-align:center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius:10px;
+    overflow:hidden;
+    background:#1c1c1c;
+}
+.identify-card:hover {
+    transform:translateY(-5px);
+    box-shadow:0 14px 28px rgba(0,0,0,0.6);
+}
+.identify-card img {
+    width:100%;
+    border-radius:8px;
+}
+.identify-card .title{ font-weight:700; margin-top:8px; font-size:0.95em; }
+.identify-card .year{ font-size:0.85em; color:#bbb; }
+
+/* === Footer === */
+.footer {
+    max-width: 950px;
+    margin: 40px auto 20px auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    background: rgba(30,30,30,0.85);
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.5);
+}
+
+.footer-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 20px;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    color: #fff;
+    border: none;
+}
+
+.footer-btn i { font-size: 16px; }
+
+.footer-btn.export { background: #27ae60; }  /* Green */
+.footer-btn.import { background: #2980b9; }  /* Blue */
+.footer-btn.clear  { background: #c0392b; }  /* Red */
+
+.footer-btn:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 6px 14px rgba(0,0,0,0.35);
+}
+
+.footer-btn:active {
+    transform: translateY(1px) scale(0.98);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+}
+
+/* File input hidden for import CSV */
+.footer-file { display: none; }
+
+/* Responsive Footer */
+@media(max-width: 700px) {
+    .footer { flex-direction: column; gap: 10px; }
+    .footer-form { flex-direction: column; width: 100%; }
+    .footer-file, .footer-btn { width: 100%; justify-content: center; }
+}
+
+/* === Responsive Adjustments === */
+@media(max-width:900px){
+    .top-card { flex-direction: column; align-items: stretch; }
+    .top-card .search-sort { justify-content: flex-start; }
+}
+
+
+
+</style>
+</head>
+<body>
+
+{% if not tmdb_key_set %}
+<div style="background:#e74c3c; color:#fff; text-align:center; padding:12px; border-radius:8px; margin-bottom:20px; font-weight:700;">
+    TMDb API key not set! Identification of movies will not work.
+    <br>
+    <input type="text" id="tmdb-key-input" placeholder="Enter TMDb API key" style="margin-top:8px; padding:6px 10px; border-radius:6px; border:none; width:250px;">
+    <button id="tmdb-key-submit" style="margin-left:5px; padding:6px 12px; border:none; border-radius:6px; cursor:pointer;">Save Key</button>
+    <div id="tmdb-key-msg" style="margin-top:6px; font-size:0.9em;"></div>
+</div>
+
+<script>
+document.getElementById("tmdb-key-submit").addEventListener("click", async () => {
+    const key = document.getElementById("tmdb-key-input").value.trim();
+    if(!key) return;
+    const msgDiv = document.getElementById("tmdb-key-msg");
+    try {
+        const res = await fetch("/set_tmdb_key", {
+            method: "POST",
+            headers: {"Content-Type":"application/x-www-form-urlencoded"},
+            body: `tmdb_key=${encodeURIComponent(key)}`
+        });
+        if(res.ok){
+            msgDiv.textContent = "Key saved! Refreshthe page to apply.";
+            msgDiv.style.color = "#2ecc71";
+        } else {
+            msgDiv.textContent = "Failed to save key.";
+            msgDiv.style.color = "#e74c3c";
+        }
+    } catch(err){
+        msgDiv.textContent = "Error saving key.";
+        msgDiv.style.color = "#e74c3c";
+    }
+});
+</script>
+{% endif %}
+
+
+
+
+
+<h1>My Movie Catalogue</h1>
+<div class="count">Total movies: <strong>0</strong></div>
+
+<!-- Top Control Card -->
+<div class="top-card">
+    <form method="POST" action="/add" class="add-form">
+        <input type="text" name="barcode" placeholder="Barcode (optional)">
+        <input type="text" name="title" placeholder="Title" required>
+        <input type="text" name="year" placeholder="Year (optional)">
+        <select name="format">
+            <option value="Blu-ray">Blu-ray</option>
+            <option value="DVD">DVD</option>
+            <option value="4K">4K</option>
+        </select>
+        <select name="status">
+            <option value="owned">Owned</option>
+            <option value="wanted">Need</option>
+        </select>
+        <button type="submit">Add Movie</button>
+    </form>
+
+    <div class="search-sort">
+        <input type="text" id="search" placeholder="Search movies...">
+        <div class="sort-buttons">
+            <button id="sort-alpha" class="active" title="Sort Alphabetically"><i class="fas fa-sort-alpha-down"></i></button>
+            <button id="sort-recent" title="Sort by Recently Added"><i class="fas fa-clock"></i></button>
+        </div>
+        <div class="filter-buttons">
+            <button id="filter-owned" class="active">Owned</button>
+            <button id="filter-wanted">Need</button>
+        </div>
+    </div>
+</div>
+
+<!-- Alphabet Bar -->
+<div class="alphabet-bar">
+    <button class="alpha-btn" data-letter="">All</button>
+    <button class="alpha-btn" data-letter="A">A</button>
+    <button class="alpha-btn" data-letter="B">B</button>
+    <button class="alpha-btn" data-letter="C">C</button>
+    <button class="alpha-btn" data-letter="D">D</button>
+    <button class="alpha-btn" data-letter="E">E</button>
+    <button class="alpha-btn" data-letter="F">F</button>
+    <button class="alpha-btn" data-letter="G">G</button>
+    <button class="alpha-btn" data-letter="H">H</button>
+    <button class="alpha-btn" data-letter="I">I</button>
+    <button class="alpha-btn" data-letter="J">J</button>
+    <button class="alpha-btn" data-letter="K">K</button>
+    <button class="alpha-btn" data-letter="L">L</button>
+    <button class="alpha-btn" data-letter="M">M</button>
+    <button class="alpha-btn" data-letter="N">N</button>
+    <button class="alpha-btn" data-letter="O">O</button>
+    <button class="alpha-btn" data-letter="P">P</button>
+    <button class="alpha-btn" data-letter="Q">Q</button>
+    <button class="alpha-btn" data-letter="R">R</button>
+    <button class="alpha-btn" data-letter="S">S</button>
+    <button class="alpha-btn" data-letter="T">T</button>
+    <button class="alpha-btn" data-letter="U">U</button>
+    <button class="alpha-btn" data-letter="V">V</button>
+    <button class="alpha-btn" data-letter="W">W</button>
+    <button class="alpha-btn" data-letter="X">X</button>
+    <button class="alpha-btn" data-letter="Y">Y</button>
+    <button class="alpha-btn" data-letter="Z">Z</button>
+</div>
+
+<div class="poster-grid"></div>
+<div class="pagination"></div>
+
+<!-- Identify Modal -->
+<div id="identify-modal" class="identify-modal hidden">
+    <div class="identify-content">
+        <div class="identify-header">
+            <h3>Identify Movie</h3>
+            <button class="identify-close">&times;</button>
+        </div>
+        <div id="identify-results" class="identify-grid"></div>
+    </div>
+</div>
+
+
+<!-- Footer with CSV buttons and Clear Data -->
+<div class="footer">
+
+    <!-- Export CSV -->
+    <a href="/export_csv" class="footer-btn export">
+        <i class="fas fa-file-export"></i> Export CSV
+    </a>
+
+    <!-- Import CSV (single button) -->
+    <form action="/import_csv" method="POST" enctype="multipart/form-data" class="footer-form">
+        <label for="csv_file" class="footer-btn import">
+            <i class="fas fa-file-import"></i> Import CSV
+        </label>
+        <input type="file" name="csv_file" id="csv_file" accept=".csv" required class="footer-file">
+    </form>
+
+    <!-- Clear All Movies -->
+    <form action="/clear_movies" method="POST" onsubmit="return confirm('Are you sure you want to clear all movies?');">
+        <button type="submit" class="footer-btn clear">
+            <i class="fas fa-trash-alt"></i> Clear All Movies
+        </button>
+    </form>
+</div>
+
+
+
+    </form>
+</div>
+
+<script>
+const posterGrid = document.querySelector(".poster-grid");
+const paginationDiv = document.querySelector(".pagination");
+const searchInput = document.getElementById("search");
+const sortAlphaBtn = document.getElementById("sort-alpha");
+const sortRecentBtn = document.getElementById("sort-recent");
+const alphaButtons = document.querySelectorAll(".alpha-btn");
+const ownedBtn = document.getElementById("filter-owned");
+const wantedBtn = document.getElementById("filter-wanted");
+const addForm = document.querySelector(".add-form");
+const addFormatSelect = addForm.querySelector('select[name="format"]');
+
+let currentPage = 1;
+let currentQuery = "";
+let currentSort = localStorage.getItem("movieSort") || "alpha";
+let currentStatus = localStorage.getItem("movieStatus") || "owned";
+let currentLetter = localStorage.getItem("movieLetter") || "";
+
+// Restore format selection in Add Movie form
+const savedFormat = localStorage.getItem("movieFormat");
+if(savedFormat){
+    addFormatSelect.value = savedFormat;
+}
+
+// Save format on change
+addFormatSelect.addEventListener("change", ()=>{
+    localStorage.setItem("movieFormat", addFormatSelect.value);
+});
+
+// Apply active sort button
+function updateSortButtons() {
+    if(currentSort === "alpha") {
+        sortAlphaBtn.classList.add("active");
+        sortRecentBtn.classList.remove("active");
+    } else {
+        sortAlphaBtn.classList.remove("active");
+        sortRecentBtn.classList.add("active");
+    }
+}
+updateSortButtons();
+
+// Apply active filter buttons
+function updateFilterButtons() {
+    ownedBtn.classList.toggle("active", currentStatus === "owned");
+    wantedBtn.classList.toggle("active", currentStatus === "wanted");
+}
+updateFilterButtons();
+
+// Apply active alphabet button
+function updateAlphaButtons() {
+    alphaButtons.forEach(b => b.classList.remove("active"));
+    if (currentLetter) {
+        const btn = document.querySelector(`.alpha-btn[data-letter="${currentLetter}"]`);
+        if(btn) btn.classList.add("active");
+    } else {
+        document.querySelector(`.alpha-btn[data-letter=""]`).classList.add("active"); // "All" button
+    }
+}
+updateAlphaButtons();
+
+// Debounce helper
+function debounce(fn, delay=300){
+    let t;
+    return (...args)=>{ clearTimeout(t); t=setTimeout(()=>fn(...args), delay);}
+}
+
+// Load movies
+async function loadMovies(page=1, query="", sort=currentSort, startsWithLetter="", status=currentStatus) {
+    currentPage = page;
+    currentQuery = query;
+    currentSort = sort;
+    currentStatus = status;
+
+    let url = `/api/search?page=${page}&sort=${sort}&status=${status}`;
+    if(query) url += `&q=${encodeURIComponent(query)}`;
+    if(startsWithLetter) url += `&starts_with=${encodeURIComponent(startsWithLetter)}`;
+
+    const res = await fetch(url);
+    const data = await res.json();
+    posterGrid.innerHTML = "";
+    data.movies.forEach(m=>{
+        const card = document.createElement("div");
+        card.className = "poster-card";
+        card.dataset.rowid = m.rowid;
+        card.innerHTML = `
+            ${m.status === "wanted" ? `<span class="badge wanted">NEED</span>` : ""}
+            ${m.poster_path?`<img src="${m.poster_path}" loading="lazy">`:""}
+            <div class="poster-info">
+                <form method="POST" action="/edit/${m.rowid}">
+                    <input type="text" name="title" value="${m.title}" required>
+                    <input type="text" name="year" value="${m.year||""}">
+                    <select name="format">
+                        <option ${m.format==="Blu-ray"?"selected":""}>Blu-ray</option>
+                        <option ${m.format==="DVD"?"selected":""}>DVD</option>
+                        <option ${m.format==="4K"?"selected":""}>4K</option>
+                    </select>
+                    <select name="status">
+                        <option value="owned" ${m.status==="owned"?"selected":""}>Owned</option>
+                        <option value="wanted" ${m.status==="wanted"?"selected":""}>Need</option>
+                    </select>
+                    <div class="actions">
+                        <button class="save" title="Save"><i class="fas fa-floppy-disk"></i></button>
+                </form>
+                <form method="POST" action="/delete/${m.rowid}" onsubmit="return confirm('Delete this movie?');">
+                    <button class="delete" title="Delete"><i class="fas fa-trash"></i></button>
+                </form>
+                <button type="button" class="identify-btn" data-rowid="${m.rowid}" data-title="${m.title}" data-year="${m.year||''}" title="Identify">
+                    <i class="fas fa-magnifying-glass"></i>
+                </button>
+                    </div>
+            </div>
+        `;
+        posterGrid.appendChild(card);
+    });
+    document.querySelector(".count strong").textContent = data.total;
+
+    // Pagination
+    paginationDiv.innerHTML = "";
+    if(data.page>1){
+        const prev = document.createElement("button");
+        prev.textContent="⬅ Prev";
+        prev.onclick=()=>loadMovies(data.page-1,currentQuery,currentSort,currentLetter,currentStatus);
+        paginationDiv.appendChild(prev);
+    }
+    const label = document.createElement("span");
+    label.textContent=` Page ${data.page} of ${data.pages} `;
+    paginationDiv.appendChild(label);
+    if(data.page<data.pages){
+        const next = document.createElement("button");
+        next.textContent="Next ➡";
+        next.onclick=()=>loadMovies(data.page+1,currentQuery,currentSort,currentLetter,currentStatus);
+        paginationDiv.appendChild(next);
+    }
+}
+
+// Search input
+searchInput.addEventListener("input", debounce(e=>{
+    currentLetter = "";
+    localStorage.setItem("movieLetter", currentLetter); // reset
+    updateAlphaButtons();
+    loadMovies(1,e.target.value,currentSort,currentLetter,currentStatus);
+}));
+
+// Sort buttons
+sortAlphaBtn.addEventListener("click", () => {
+    if(currentSort === "alpha") return;
+    currentSort = "alpha";
+    localStorage.setItem("movieSort", currentSort);
+    updateSortButtons();
+    loadMovies(1, currentQuery, currentSort, currentLetter, currentStatus);
+});
+sortRecentBtn.addEventListener("click", () => {
+    if(currentSort === "recent") return;
+    currentSort = "recent";
+    localStorage.setItem("movieSort", currentSort);
+    updateSortButtons();
+    loadMovies(1, currentQuery, currentSort, currentLetter, currentStatus);
+});
+
+// Filter buttons
+ownedBtn.addEventListener("click", () => { 
+    currentStatus="owned"; 
+    localStorage.setItem("movieStatus", currentStatus);
+    updateFilterButtons(); 
+    loadMovies(1,currentQuery,currentSort,currentLetter,currentStatus); 
+});
+wantedBtn.addEventListener("click", () => { 
+    currentStatus="wanted"; 
+    localStorage.setItem("movieStatus", currentStatus);
+    updateFilterButtons(); 
+    loadMovies(1,currentQuery,currentSort,currentLetter,currentStatus); 
+});
+
+// Alphabet buttons
+alphaButtons.forEach(btn => {
+    btn.addEventListener("click", () => {
+        currentLetter = btn.dataset.letter;
+        localStorage.setItem("movieLetter", currentLetter); // save
+        updateAlphaButtons();
+        loadMovies(1, currentQuery, currentSort, currentLetter, currentStatus);
+    });
+});
+
+// === Identify Modal JS ===
+const modal = document.getElementById("identify-modal");
+const resultsContainer = document.getElementById("identify-results");
+
+function openModal(){ modal.classList.remove("hidden"); }
+function closeModal(){ modal.classList.add("hidden"); modal.dataset.rowid=""; }
+
+document.addEventListener("click", async (e)=>{
+    if(e.target.closest(".identify-btn")){
+        e.preventDefault();
+        const button = e.target.closest(".identify-btn");
+        const rowid = button.dataset.rowid;
+        const title = button.dataset.title;
+        const year = button.dataset.year;
+        modal.dataset.rowid = rowid;
+        openModal();
+        resultsContainer.innerHTML = "Loading...";
+        try{
+            const res = await fetch(`/tmdb_suggestions?title=${encodeURIComponent(title)}&year=${encodeURIComponent(year)}`);
+            const movies = await res.json();
+            resultsContainer.innerHTML = "";
+            movies.forEach(m=>{
+                const card = document.createElement("div");
+                card.className="identify-card";
+                card.dataset.title = m.title;
+                card.dataset.year = m.release_date?.slice(0,4)||"";
+                card.dataset.poster = m.poster_path || "";
+                card.innerHTML = `
+                    <img src="${m.poster_path?`https://image.tmdb.org/t/p/w300${m.poster_path}`:""}">
+                    <div class="title">${m.title}</div>
+                    <div class="year">${m.release_date?.slice(0,4)||""}</div>
+                `;
+                resultsContainer.appendChild(card);
+            });
+        } catch(err){ resultsContainer.innerHTML = "Failed to load suggestions."; console.error(err); }
+    }
+
+    if(e.target.classList.contains("identify-close") || e.target === modal){
+        closeModal();
+    }
+
+    if(e.target.closest(".identify-card")){
+        const card = e.target.closest(".identify-card");
+        const rowid = modal.dataset.rowid;
+        const newTitle = card.dataset.title;
+        const newYear = card.dataset.year;
+        const poster = card.dataset.poster;
+        try{
+            await fetch(`/update_movie/${rowid}`,{
+                method:"POST",
+                headers:{"Content-Type":"application/json"},
+                body: JSON.stringify({title:newTitle, year:newYear, poster_path:poster})
+            });
+            closeModal();
+            loadMovies(currentPage, currentQuery, currentSort, currentLetter, currentStatus);
+        } catch(err){ console.error("Failed to update movie:", err); }
+    }
+
+});
+
+// Automatically submit the import form when a file is selected
+document.getElementById("csv_file").addEventListener("change", function() {
+    if(this.files.length > 0) {
+        this.closest("form").submit();
+    }
+});
+
+
+// Initial load
+loadMovies();
+</script>

@@ -1,0 +1,26 @@
+# TMDb API key
+TMDB_API_KEY = "f5c2585b8b4813b98778c55f490f6b21"
+
+# SQLite database path
+DB_PATH = "movies.db"
+
+# Default number of items per page
+PAGE_SIZE = 78
+
+# Flask secret key
+SECRET_KEY = "supersecretkey"
+
+# Default movie status
+DEFAULT_STATUS = "owned"
+
+# Default movie format if not provided
+DEFAULT_FORMAT = "Blu-ray"
+
+# CSV export filename
+CSV_EXPORT_FILENAME = "movies_export.csv"
+
+# TMDb image size for posters
+TMDB_POSTER_SIZE = "w200"
+
+# Debug mode
+DEBUG = True

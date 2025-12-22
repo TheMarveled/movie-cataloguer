@@ -1,2 +1,143 @@
-# movie-cataloguer
-A simple, but advanced, and user-friendly movie cataloguer web page. Save and log your movie collection in an easy database, with a user-frontend to view the movies with TMDB API and posters.
+
+# Movie Cataloguer
+
+A web-based movie catalogue built with **Flask** and **SQLite** that lets you manage your movie collection. It supports adding, editing, deleting, and organizing movies, integrates with **TMDb API** for movie identification, and allows importing/exporting via CSV.
+
+---
+
+## Features
+
+* **Add movies** with title, year, barcode, format (Blu-ray/DVD/4K), and status (Owned/Wanted).
+* **TMDb integration** for automatic movie title, release year, and poster lookup. (requires API key)
+* **Edit and delete movies** directly in the interface.
+* **Search and filter** your collection by title, year, format, status, or alphabetically.
+* **Pagination** for browsing large collections.
+* **Export your collection to CSV** or **import from CSV**.
+* **Clear all movies** from the catalogue.
+* **Dynamic TMDb API key input** in the web interface if no key is set—enter your key without editing code manually.
+
+---
+
+## Installation
+
+1. **Clone the repository**
+
+```bash
+git clone https://github.com/themarveled/movie-cataloguer.git
+cd movie-cataloguer
+```
+
+2. **Create a virtual environment and install dependencies**
+
+```bash
+python -m venv venv
+# Activate environment
+source venv/bin/activate   # Linux/macOS
+venv\Scripts\activate      # Windows
+pip install -r requirements.txt
+```
+
+3. **Set up TMDb API key (optional if you want identification)**
+
+* You can either:
+
+  * Open `config.py` and replace the placeholder:
+
+```python
+TMDB_API_KEY = "YOUR_TMDB_API_KEY_HERE"
+```
+
+* Or, if no key is set, enter it directly in the web interface after running the app (dynamic input box appears).
+
+4. **Run the app**
+
+```bash
+python app.py
+```
+
+5. **Open in browser**
+
+Visit [http://127.0.0.1:5000](http://127.0.0.1:5000)
+
+---
+
+## Usage
+
+* **Add Movie**: Fill in the title, optional year and barcode, select format and status, then click *Add Movie*.
+* **Edit Movie**: Change the details in the movie card and click the save button.
+* **Identify Movie**: Use the TMDb identify button to fetch poster, correct title, or release year.
+* **Delete Movie**: Click the trash icon on a movie card.
+* **Search & Filter**: Use the search bar, sort buttons, filter buttons, or alphabet bar.
+* **Export CSV**: Download your collection as `movies_export.csv`.
+* **Import CSV**: Select a CSV file to upload your collection.
+* **Clear All Movies**: Removes all movies from the database permanently.
+* **Set TMDb API Key**: If not set, a red warning box appears at the top; enter your API key directly to enable movie identification.
+
+---
+
+## Project Structure
+
+```
+.
+├── app.py             # Main Flask application
+├── config.py          # Config file with all options (API keys, DB path, defaults)
+├── templates/
+│   └── catalogue.html # Main HTML template
+├── static/
+│   └── styles.css     # (Optional) Separate CSS file
+├── movies.db          # SQLite database (auto-created)
+├── requirements.txt   # Python dependencies
+└── README.md
+```
+
+---
+
+## Dependencies
+
+* [Flask](https://flask.palletsprojects.com/)
+* [Requests](https://docs.python-requests.org/)
+* SQLite (built-in with Python)
+
+---
+
+## Configuration (`config.py`)
+
+* **TMDb API Key**: Required for identifying movies and fetching posters. Can be set in the file or via the web UI.
+* **Database Path**: `DB_PATH = "movies.db"` (default location of SQLite database).
+* **Page Size**: Number of movies per page (`PAGE_SIZE = 78` default).
+* **Flask Secret Key**: `SECRET_KEY` for session security.
+* **Default Movie Status**: `DEFAULT_STATUS = "owned"`
+* **Default Movie Format**: `DEFAULT_FORMAT = "Blu-ray"`
+* **CSV Export Filename**: `CSV_EXPORT_FILENAME = "movies_export.csv"`
+* **TMDb Poster Size**: `TMDB_POSTER_SIZE = "w200"`
+* **Debug Mode**: `DEBUG = True`
+
+You can customize all these settings in `config.py` to personalize your app.
+
+---
+
+## Contributing
+
+Contributions are welcome! Feel free to:
+
+* Submit bug reports or feature requests.
+* Open a pull request with improvements.
+* Suggest UI enhancements or new features.
+
+---
+
+## License
+
+This project is licensed under the MIT License.
+
+---
+
+## Notes
+
+* If **TMDb API key is not set**, movie identification features will be disabled.
+* CSV import requires headers: `barcode,title,year,format,poster_path,status`.
+* The dynamic key input allows setting the API key **without editing code manually**, but you must **restart the app** for changes to take effect.
+
+---
+
+
