@@ -34,6 +34,8 @@ If you enjoy this project and want to support me, you can donate via:
 
 ---
 
+<img src="/imgs/main_img.PNG" alt='img src' width="200">
+
 ## Installation
 
 1. **Clone the repository**
