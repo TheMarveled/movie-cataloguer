@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="logo.PNG" alt="Movie Cataloguer Logo" width="180">
+  <img src="logo.PNG" alt="Movie Cataloguer Logo" width="200">
 </p>
 
 # Movie Cataloguer
