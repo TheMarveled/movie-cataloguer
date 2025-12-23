@@ -6,6 +6,9 @@
 
 A web-based movie catalogue built with **Flask** and **SQLite** that lets you manage your movie collection. It supports adding, editing, deleting, and organizing movies, integrates with **TMDb API** for movie identification, and allows importing/exporting via CSV.
 
+![Python](https://img.shields.io/badge/python-3.11-blue)
+![License](https://img.shields.io/badge/license-MIT-green)
+
 ---
 
 
@@ -96,6 +99,17 @@ Visit [http://127.0.0.1:5000](http://127.0.0.1:5000)
 
 ---
 
+# Skins
+
+<img src="/imgs/dark.PNG" alt='img src' width="400">
+=============== Dark Theme ===============
+<img src="/imgs/light.PNG" alt='img src' width="400">
+=============== Light Theme ===============
+<img src="/imgs/classic.PNG" alt='img src' width="400">
+=============== Classic Theme ===============
+
+--
+
 ## Project Structure
 
 ```
@@ -180,11 +194,6 @@ To get you started quickly, the app includes **TMDb API integration** for automa
 However I do appreciate a donation to help maintain this project.
 
 ---
-
-![Python](https://img.shields.io/badge/python-3.11-blue)
-![License](https://img.shields.io/badge/license-MIT-green)
-
---
 
 # Donator's Column
 

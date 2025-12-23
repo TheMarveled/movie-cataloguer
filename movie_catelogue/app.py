@@ -317,6 +317,7 @@ def clear_movies():
     flash("All movies have been cleared.")
     return redirect("/catalogue")
 
+
 # === RUN ===
 if __name__ == "__main__":
     app.run(debug=DEBUG)

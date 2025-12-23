@@ -1,0 +1,68 @@
+/* === General Page Styling === */
+body {
+    background: linear-gradient(160deg, #0f2027, #203a43, #2c5364);
+    color: #f5f5f5;
+}
+
+h1 { color:#f5f5f5; text-shadow: 2px 2px 5px rgba(0,0,0,0.5); }
+.count { color:#ccc; }
+
+/* Top Card */
+.top-card { background: rgba(30,30,30,0.85); box-shadow: 0 6px 25px rgba(0,0,0,0.5); }
+.top-card .add-form input[type="text"],
+.top-card .add-form select { background: #1c1c1c; color: #f5f5f5; border: 1px solid #555; }
+.top-card .add-form input:focus,
+.top-card .add-form select:focus { border-color: #f39c12; }
+.top-card .add-form button { background: linear-gradient(135deg,#f39c12,#f1c40f); color: #111; }
+.top-card .add-form button:hover { background: linear-gradient(135deg,#f1c40f,#f39c12); }
+
+.top-card #search { background: #1c1c1c; color: #f5f5f5; border:1px solid #555; }
+.top-card #search:focus { border-color: #f39c12; }
+
+.top-card .sort-buttons button { background: #2980b9; color: #fff; }
+.top-card .sort-buttons button.active { background: #3498db; }
+.top-card .sort-buttons button:hover { background: #1c5980; }
+
+.top-card .filter-buttons button { background: #555; color: #fff; }
+.top-card .filter-buttons button.active { background: #f39c12; color:#111; }
+.top-card .filter-buttons button:hover { background:#777; }
+
+/* Alphabet Bar */
+.alphabet-bar .alpha-btn { background:#2980b9; color:#fff; }
+.alphabet-bar .alpha-btn.active { background:#3498db; }
+.alphabet-bar .alpha-btn:hover { background:#1c5980; }
+
+/* Poster Card */
+.poster-card { background: rgba(20,20,20,0.9); }
+.poster-card img { border-bottom: 1px solid #444; }
+.poster-info input, .poster-info select { background:#1c1c1c; color:#f5f5f5; border:1px solid #555; }
+
+/* Badge */
+.badge.wanted { background: #e74c3c; color: #fff; }
+
+/* Action Buttons */
+button.save { background: linear-gradient(135deg, #27ae60, #2ecc71); color:#fff; }
+button.delete { background: linear-gradient(135deg, #c0392b, #e74c3c); color:#fff; }
+button.identify-btn { background: linear-gradient(135deg, #f39c12, #f1c40f); color:#fff; }
+
+/* Pagination */
+.pagination button { background:#2980b9; color:white; }
+.pagination button:hover { background:#3498db; }
+
+/* Identify Modal */
+.identify-modal { background: rgba(0,0,0,0.9); }
+.identify-content { background:#111; color:#f5f5f5; box-shadow:0 0 40px rgba(0,0,0,0.7); }
+.identify-header { background:#222; color:#f39c12; }
+.identify-card { background:#1c1c1c; }
+.identify-card .title { color:#f5f5f5; }
+.identify-card .year { color:#bbb; }
+
+/* Footer */
+.footer { background: rgba(30,30,30,0.85); box-shadow:0 6px 20px rgba(0,0,0,0.5); }
+.footer-btn.export { background: #27ae60; }
+.footer-btn.import { background: #2980b9; }
+.footer-btn.clear { background: #c0392b; }
+.footer-btn.discord { background: #5865F2; }
+.footer-btn.github { background: #24292e; }
+.footer-btn.discord:hover { background: #4752c4; }
+.footer-btn.github:hover { background: #1b1f23; }
