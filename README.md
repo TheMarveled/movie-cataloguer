@@ -41,6 +41,8 @@ If you enjoy this project and want to support me, you can donate via:
 This is the cataloguer. Compact and easy to understand.
 <img src="/imgs/top-card.PNG" alt='img src' width="400">
 This is the top card. You can search movies, add movies, and sort/filter.
+<img src="/imgs/toolbar.PNG" alt='img src' width="400">
+This is the toolbar. Bulk delete and edit movies.
 
 ## Installation
 
@@ -198,3 +200,4 @@ However I do appreciate a donation to help maintain this project.
 # Donator's Column
 
 Empty... so far
+

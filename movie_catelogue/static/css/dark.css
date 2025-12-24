@@ -26,6 +26,43 @@ h1 { color:#f5f5f5; text-shadow: 2px 2px 5px rgba(0,0,0,0.5); }
 .top-card .filter-buttons button { background: #555; color: #fff; }
 .top-card .filter-buttons button.active { background: #f39c12; color:#111; }
 .top-card .filter-buttons button:hover { background:#777; }
+ 
+/* Skin Selector */
+.skin-selector select {
+    background: #1c1c1c;
+    color: #f5f5f5;
+    border: 1px solid #555;
+}
+
+.skin-selector select:focus {
+    border-color: #f39c12;
+}
+
+/* Settings Button */
+#settings-btn {
+    background: transparent;
+    color: #ccc;
+}
+
+#settings-btn:hover {
+    color: #f5f5f5;
+}
+
+/* Settings Dropdown */
+.settings-dropdown {
+    background: #1c1c1c;
+    border: 1px solid #444;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.6);
+}
+
+/* Settings Options */
+.settings-option {
+    color: #f5f5f5;
+}
+
+.settings-option:hover {
+    background: rgba(243, 156, 18, 0.15);
+}
 
 /* Alphabet Bar */
 .alphabet-bar .alpha-btn { background:#2980b9; color:#fff; }
@@ -66,3 +103,53 @@ button.identify-btn { background: linear-gradient(135deg, #f39c12, #f1c40f); col
 .footer-btn.github { background: #24292e; }
 .footer-btn.discord:hover { background: #4752c4; }
 .footer-btn.github:hover { background: #1b1f23; }
+
+/* Dropdowns (dark theme) */
+.theme-dark .dropdown-menu { background:#ffffff; color:#ffffff; border:1px solid rgba(0, 0, 0, 0.05); box-shadow:0 10px 30px rgba(0,0,0,0.7); }
+.theme-dark .round-btn { background: rgba(255,255,255,0.03); }
+.theme-dark .dropdown-menu .sort-option:hover { background: rgba(255, 255, 255, 0.03); }
+.theme-dark .dropdown-menu label { color:#000000; }
+.theme-dark .dropdown-menu .dropdown-header { color:#f39c12; }
+
+/* Modal theming */
+.theme-dark .edit-content,
+.theme-dark .identify-content {
+    --modal-bg: #0f0f10;
+    --modal-color: #f5f5f5;
+    --modal-input-bg: #141414;
+    --modal-input-border: #333;
+    --modal-accent: #f39c12;
+    --modal-accent-foreground: #111;
+    background: var(--modal-bg);
+    color: var(--modal-color);
+}
+.theme-dark .edit-header, .theme-dark .identify-header { color: var(--modal-color); }
+.theme-dark .edit-content input, .theme-dark .edit-content select { background: var(--modal-input-bg); border-color: var(--modal-input-border); color: var(--modal-color); }
+.theme-dark .edit-actions button { background: var(--modal-accent); color: var(--modal-accent-foreground); }
+
+/* Responsive Footer */
+@media(max-width: 700px) {
+    .footer { flex-direction: column; gap: 10px; }
+    .footer-form { flex-direction: column; width: 100%; }
+    .footer-file, .footer-btn { width: 100%; justify-content: center; }
+}
+
+/* === Responsive Adjustments === */
+@media(max-width:900px){
+    .top-card { flex-direction: column; align-items: stretch; }
+    .top-card .search-sort { justify-content: flex-start; }
+}
+
+/* Responsive: make advanced fields stack on small screens */
+@media(max-width:700px){
+    #advanced-fields {
+        flex-direction: column;
+        gap: 8px;
+    }
+    #advanced-fields input,
+    #advanced-fields select {
+        width: 100%;
+        min-width: unset;
+        flex: unset;
+    }
+}

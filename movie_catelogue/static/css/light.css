@@ -62,7 +62,7 @@ button.identify-btn { background: linear-gradient(135deg, #f39c12, #f1c40f); col
 .identify-card { background:#fff; }
 .identify-card .title { color:#222; }
 .identify-card .year { color:#555; }
-
+ 
 /* Footer */
 .footer { background: rgba(255,255,255,0.85); box-shadow: 0 6px 20px rgba(0,0,0,0.1); }
 .footer-btn.export { background: #27ae60; }
@@ -72,3 +72,26 @@ button.identify-btn { background: linear-gradient(135deg, #f39c12, #f1c40f); col
 .footer-btn.github { background: #24292e; }
 .footer-btn.discord:hover { background: #4752c4; }
 .footer-btn.github:hover { background: #1b1f23; }
+
+/* Dropdowns (light theme) */
+.theme-light .dropdown-menu { background: #fff; color: #222; border:1px solid rgba(0,0,0,0.06); box-shadow:0 10px 30px rgba(0,0,0,0.08); }
+.theme-light .round-btn { background: rgba(0,0,0,0.04); }
+.theme-light .dropdown-menu .sort-option:hover { background: rgba(0,0,0,0.04); }
+.theme-light .dropdown-menu .dropdown-header { color:#f39c12; }
+
+/* Modal theming for light */
+.theme-light .edit-content,
+.theme-light .identify-content {
+    --modal-bg: #ffffff;
+    --modal-color: #222222;
+    --modal-input-bg: #ffffff;
+    --modal-input-border: #d8d8d8;
+    --modal-accent: #2ecc71;
+    --modal-accent-foreground: #ffffff;
+    background: var(--modal-bg);
+    color: var(--modal-color);
+}
+.theme-light .edit-content input, .theme-light .edit-content select { background: var(--modal-input-bg); border-color: var(--modal-input-border); color: var(--modal-color); }
+.theme-light .edit-actions button { background: var(--modal-accent); color: var(--modal-accent-foreground); }
+.theme-light .edit-header, .theme-light .identify-header { color: var(--modal-color); }
+

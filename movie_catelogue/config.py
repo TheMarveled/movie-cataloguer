@@ -1,3 +1,6 @@
+# config.py
+MOVIE_CATALOGUE_TITLE = "Movie Cataloguer"
+
 # TMDb API key
 TMDB_API_KEY = ""
 
@@ -24,3 +27,7 @@ TMDB_POSTER_SIZE = "w200"
 
 # Debug mode
 DEBUG = True
+
+# Automatically add movies to TMDb collections
+AUTO_ADD_COLLECTIONS = True
+ 
